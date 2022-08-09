@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = '/api/persons'
+const baseUrl = 'http://localhost:3001/api/persons'
 
 const getAll = () => {
   const request = axios.get(baseUrl)
@@ -17,7 +17,7 @@ const update = (id, newObject) => {
 }
 
 const deletePerson = (id, name) => {
-  if (window.confirm('Delete ', `${name}`, '?')) {
+  if (window.confirm('Do you want to delete ', `${name}`, '?')) {
     return axios.delete(`${baseUrl}/${id}`)
   }
 }
