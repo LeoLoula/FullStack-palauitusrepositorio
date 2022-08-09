@@ -29,7 +29,7 @@ const App = () => {
     const personObject = {
       name: newName,
       number: newNumber,
-      id: Math.random() > 0.5,
+      id: Math.max(...persons.map((n) => 1 + n.id)),
     }
     if (
       persons.map((object) => object.name).indexOf(personObject.name) !== -1
@@ -64,8 +64,9 @@ const App = () => {
         setNewNumber('')
       }
     } else {
+      console.log(personObject)
       personService.create(personObject).then((response) => {
-        setPersons(persons.concat(response.data))
+        setPersons(persons.concat(response))
         setNewName('')
         setNewNumber('')
       })
